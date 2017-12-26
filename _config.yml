@@ -10,6 +10,11 @@ baseurl: ""
 url: "https://opencode.space"
 permalink: /:title
 
+# Header menu
+header_pages:
+  - pages/about.md
+  - pages/now.md
+
 # Social & Contact
 twitter_username: und0ck3d
 github_username:  und0ck3d
