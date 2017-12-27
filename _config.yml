@@ -24,6 +24,9 @@ email: joao@opencode.space
 disqus:
   shortname: joaocrq
 
+# Google Analytics
+google_analytics: "UA-46694741-18"
+
 # Build settings
 markdown: kramdown
 theme: minima
