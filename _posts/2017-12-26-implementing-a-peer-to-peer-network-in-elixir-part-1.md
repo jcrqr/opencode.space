@@ -221,6 +221,12 @@ That would raise a big issue when we need to enter a loop, because when you ente
 
 Actually, the only processes that can use `:gen_server.enter_loop/3` are those started with this particular function.
 
+The `handle_info/2` callback will receive every TCP event. Those can be:
+
+* `{:tcp, socket, message}` --- a normal message sent by the client
+* `{:tcp_error, socket, reason}` --- any error that occurs with the connection
+* `{:tcp_closed, socket}` --- when the connection is closed
+
 ## Starting the server
 
 Update **config/config.exs** to include the server configuration:
