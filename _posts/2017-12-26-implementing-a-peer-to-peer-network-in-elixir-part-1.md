@@ -27,7 +27,7 @@ When we're done, you'll be able to connect and test it using Telnet.
 
 ## Create the project
 
-Use [Mix]() to create a new project with the `--sup` flag, to generate an OTP application skeleton
+Use [Mix](https://hexdocs.pm/mix/Mix.html) to create a new project with the `--sup` flag, to generate an OTP application skeleton
 that includes a supervision tree and the `application` callback setup. For the sake of simplicity,
 I'll name this project `network`:
 
@@ -102,7 +102,7 @@ to create a pool of acceptor processes that will accept incoming connections and
 The five arguments the `:ranch.start_listener/5` requires are:
 
 0. `:network` --- unique name that identifies the listener
-0. `:ranch_tcp` --- the transport[^transport]
+0. `:ranch_tcp` --- the transport
 0. `[{:port, port}]` --- transport's options
 0. `Network.Handler` --- protocol handler
 0. `[]` --- handler's options
@@ -273,7 +273,7 @@ $ mix run --no-halt
 00:00:00.000 [info] Accepting connections on port 5555
 ```
 
-Open another terminal and connect using `telnet`:
+Open another terminal and connect using Telnet:
 
 ```bash
 $ telnet 127.0.0.1 5555
@@ -296,7 +296,7 @@ the application's terminal you'll see (for example):
 00:00:00.000 [info] Received new message from 127.0.0.1:00000: "Hello, opencode.space!\r\n". Echoing it back
 ```
 
-And if you close the terminal running `telnet` our application also gets notified:
+And if you close the terminal running Telnet our application also gets notified:
 
 ```bash
 00:00:00.000 [info] Peer 127.0.0.1:00000 disconnected
@@ -312,6 +312,4 @@ Stay tunned for updates!
 
 ## Notes
 
-[^ranch]: [Ranch]() is a socket acceptor pool for TCP protocols. For more information visit the library's [User Guide]() or [Function Reference]()
-
-[^transport]: TODO
+[^ranch]: [Ranch](https://github.com/ninenines/ranch) is a socket acceptor pool for TCP protocols developed by [NineNines](https://ninenines.eu/). For more information visit the library's [User Guide](https://ninenines.eu/docs/en/ranch/1.4/guide) or [Function Reference](https://ninenines.eu/docs/en/ranch/1.4/manual)
