@@ -35,6 +35,6 @@ But he doesn't plan to work with those professionally nor specialize in them so,
 <br />
 
 ```
-Last time this page was updated was on 2017-12-22.
+Last time this page was updated was on 2017-12-26.
 ```
 
