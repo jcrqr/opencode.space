@@ -1,9 +1,10 @@
 # Site settings
 title: opencode.space
 author: João Cerqueira
+short_description: Experiences on software development and other random topics
 description: >- # this means to ignore newlines until "baseurl:"
-  Code snippets, tutorials, random notes and opinions
-  from João Cerqueira.
+  Blog written by João Cerqueira that covers his experiences on software development
+  and other random topics he may find worth sharing.
 
 # Endpoint config
 baseurl: ""
