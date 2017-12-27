@@ -2,7 +2,7 @@
 layout: post
 title: Implementing a peer-to-peer network in Elixir - The Server
 categories: code elixir
-published: false
+published: true
 ---
 
 In the past week or so I've been implementing a peer-to-peer network using Elixir
