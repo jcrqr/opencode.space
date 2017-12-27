@@ -213,7 +213,7 @@ As we implement the `GenServer` behaviour we must use `:gen_server.enter_loop/3`
 
 Now going back, why `:proc_lib.spawn_link/3`? If you are aware of the `GenServer` behaviour you know that you must define a `start/3` or `start_link/3` function to start the server and that once it has started it will call the `init` callback. So far so good.
 
-The issue happens because of the way that behaviour works. According to the [`GenServer:start_link/3` documentation](https://hexdocs.pm/elixir/GenServer.html#start_link/3):
+The issue happens because of the way that behaviour works. According to the [`GenServer.start_link/3` documentation](https://hexdocs.pm/elixir/GenServer.html#start_link/3):
 
 > To ensure a synchronized start-up procedure, this function does not return until `c:init/1` has returned.
 
@@ -227,7 +227,8 @@ The `handle_info/2` callback will receive every TCP event. Those can be:
 * `{:tcp_error, socket, reason}` --- any error that occurs with the connection
 * `{:tcp_closed, socket}` --- when the connection is closed
 
-We've also defined a `stringify_peername/1` helper function to give us a friendly name for a given connection. It uses the `:inet.peername/1` function
+We've also defined a `stringify_peername/1` helper function to give us a friendly name for a given connection. It uses the `:inet.peername/1` function to retrieve the address and port of a connection
+and returns a string combining both values.
 
 ## Starting the server
 
