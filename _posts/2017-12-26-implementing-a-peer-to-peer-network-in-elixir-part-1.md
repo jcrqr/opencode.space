@@ -14,7 +14,7 @@ to learn more and experimenting OTP applications and concepts.
 We'll be implementing a peer-to-peer network that allows peers to send a text message to other peers and
 receive the same message back. Simple enough, right?
 
-This series is splitted in three parts:
+This series is split in three parts:
 
 0. [Implementing a peer-to-peer network in Elixir - The Server]({{ page.url | relative }}) (current)
 0. ~~Implementing a peer-to-peer network in Elixir - The Client~~
@@ -203,7 +203,7 @@ defmodule Network.Handler do
 end
 ```
 
-There are some particularities about this module that are very interesting. First, you may've noticed we've implemented the `GenServer` behaviour because of the functions and callbacks defined, although we don't use the `GenServer.start_link/3` function and instead use `:proc_lib.spawn_link/3`.
+There are some particularities about this module that are very interesting. First, you may have noticed we've implemented the `GenServer` behaviour because of the functions and callbacks defined, although we don't use the `GenServer.start_link/3` function and instead use `:proc_lib.spawn_link/3`.
 
 Before moving into more details on that, let's see the `init/3` function. It's all clear at first sight: we acknowledge the connection with `:ranch.accept_ack/1`, set the connection to be active and then... we enter a loop?
 
