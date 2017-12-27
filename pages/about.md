@@ -6,8 +6,8 @@ permalink: /about/
 
 <div style="font-size: 130%; margin-bottom: 1.5rem">
   <em>opencode.space</em> is a blog written by <a href="#the-author">João Cerqueira</a> that
-  covers his experiences on <a href="/categories/code">software developer</a> and other <a href="/categories/random">random topics</a> he
-  may find worth to share.
+  covers his experiences on <a href="/categories/code">software developement</a> and other <a href="/categories/random">random topics</a> he
+  may find worth sharing.
 </div>
 
 ### The Author
