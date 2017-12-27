@@ -227,7 +227,7 @@ The `handle_info/2` callback will receive every TCP event. Those can be:
 * `{:tcp_error, socket, reason}` --- any error that occurs with the connection
 * `{:tcp_closed, socket}` --- when the connection is closed
 
-We've also defined a `stringify_peername/1` helper function to give us a friendly name for a given connection.
+We've also defined a `stringify_peername/1` helper function to give us a friendly name for a given connection. It uses the `:inet.peername/1` function
 
 ## Starting the server
 
