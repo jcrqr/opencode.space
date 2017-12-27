@@ -1,14 +1,12 @@
 ---
 layout: post
-title:  "Implementing a peer-to-peer network in Elixir - The Server"
+title: Implementing a peer-to-peer network in Elixir - The Server
 categories: code elixir
 published: false
 ---
 
 In the past week or so I've been implementing a peer-to-peer network using Elixir
-as part of a project I'm working on. I thought about writing this post series for two reasons:
-first I haven't found much resources addressing such cases online; and second to document the
-whole process for future reference.
+as part of a project I'm working on. I thought about writing this post series because I haven't found much resources addressing such cases online and second to document the whole process for future reference.
 
 Even if you don't want to implement a peer-to-peer network, this is still a great exercise
 to learn more and experimenting OTP applications and concepts.
@@ -25,13 +23,13 @@ This series is splitted in three parts:
 In this post we cover our peer-to-peer network server-side logic. In the end, you will have a working
 TCP server that listens and accepts connections and echoes back every message it receives.
 
-You will be able to connect and test it using `telnet`.
+When we're done, you'll be able to connect and test it using Telnet.
 
 ## Create the project
 
 Use [Mix]() to create a new project with the `--sup` flag, to generate an OTP application skeleton
 that includes a supervision tree and the `application` callback setup. For the sake of simplicity,
-I'll name this project "network":
+I'll name this project `network`:
 
 ```bash
 $ mix new network --sup
@@ -39,7 +37,7 @@ $ mix new network --sup
 
 ## Setup dependencies
 
-For this project, the only dependency that we will need is `ranch`[^ranch]. Update **mix.exs** to include it:
+For this project, the only dependency that we will need is Ranch[^ranch]. Update **mix.exs** to include it:
 
 ```elixir
 defp deps do
@@ -57,8 +55,8 @@ $ mix deps.get
 
 ## Listening for connections
 
-To have have someone connecting to our server, we have to be listening for new connections and accept them as
-they arrive. This is where the `ranch`[^ranch] library comes handy.
+To have have someone connecting to our server, we have to be listening for and accepting them as
+they arrive. This is where the Ranch[^ranch] library comes handy.
 
 Create **lib/network/server.ex**:
 
@@ -99,8 +97,7 @@ end
 ```
 
 On the `init/1` function is where the magic happens. We're using the `:ranch.start_listener/5` function
-to create a pool of acceptor processes that will accept incoming connections and, when it does, spawn a new process
-to handle it with the specified protocol (`Network.Handler`).
+to create a pool of acceptor processes that will accept incoming connections and, when it does, spawn a new process to handle it with the specified protocol (`Network.Handler`).
 
 The five arguments the `:ranch.start_listener/5` requires are:
 
@@ -112,7 +109,7 @@ The five arguments the `:ranch.start_listener/5` requires are:
 
 ## Handling connections
 
-Because `ranch`[^ranch] makes as abstract the protocol handling into it's own module --- which is very
+Because Ranch[^ranch] makes us abstract the protocol handling into it's own module --- which is very
 useful because of the fact that it minimizes code complexity --- that's what we'll do now.
 
 Create **lib/network/handler.ex**:
@@ -206,29 +203,21 @@ defmodule Network.Handler do
 end
 ```
 
-There are some particularities about this module that are interesting very interesting. First,
-you may've noticed we've implemented the `GenServer` behaviour because of the functions and callbacks defined,
-although we don't use the `GenServer.start_link/3` function and instead use `:proc_lib.spawn_link/3`.
+There are some particularities about this module that are very interesting. First, you may've noticed we've implemented the `GenServer` behaviour because of the functions and callbacks defined, although we don't use the `GenServer.start_link/3` function and instead use `:proc_lib.spawn_link/3`.
 
-Before moving into more details on that, let's see the `init/3` function. It's all clear at first sight:
-we acknowledge the connection with `:ranch.accept_ack/1`, sets the connection to be active and then... we enter a loop?
+Before moving into more details on that, let's see the `init/3` function. It's all clear at first sight: we acknowledge the connection with `:ranch.accept_ack/1`, set the connection to be active and then... we enter a loop?
 
-Sure! We need to be in a loop waiting for new messages to arrive from the connection and upon receiving a message we
-do whatever processing it requires, entering the loop again waiting for new messages.
+Sure! We need to be in a loop waiting for new messages to arrive from the connection and upon receiving a message we do whatever processing it requires, entering the loop and waiting for new messages again.
 
-As we implement the `GenServer` behaviour we must use `:gen_server.enter_loop/3` which turns our process into a `:gen_server` process
-and enters the `:gen_server` process receive loop.
+As we implement the `GenServer` behaviour we must use `:gen_server.enter_loop/3` which turns our process into a `:gen_server` process and enters the `:gen_server` process receive loop.
 
-Now going back, why `:proc_lib.spawn_link/3`? If you are aware of the `GenServer` behaviour you know that you must define a
-`start/3` or `start_link/3` function to start the server and that once it has started it will call the `init` callback. So far so good.
+Now going back, why `:proc_lib.spawn_link/3`? If you are aware of the `GenServer` behaviour you know that you must define a `start/3` or `start_link/3` function to start the server and that once it has started it will call the `init` callback. So far so good.
 
-The issue is because of the way that behaviour works. According with the `GenServer.start_link/3` documentation:
+The issue happens because of the way that behaviour works. According to the [`GenServer:start_link/3` documentation](https://hexdocs.pm/elixir/GenServer.html#start_link/3):
 
 > To ensure a synchronized start-up procedure, this function does not return until `c:init/1` has returned.
 
-That would raise a big issue when we need to enter a loop, because when you enter the loop it will never return until
-something bad happen and an error is returned. Thus why we are using `:proc.spawn_link/3`, because instead of spawning the
-process synchronously it will spawn it asynchronously and we won't have any issues.
+That would raise a big issue when we need to enter a loop, because when you enter the loop it will never return until something bad happen and an error is returned. Thus why we are using `:proc.spawn_link/3`, because instead of spawning the process synchronously it will spawn it asynchronously and we won't have any issues.
 
 Actually, the only processes that can use `:gen_server.enter_loop/3` are those started with this particular function.
 
