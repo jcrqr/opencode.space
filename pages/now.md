@@ -4,11 +4,13 @@ title: Now
 permalink: /now/
 ---
 
-Here you can find some hints about what [João Cerqueira](/about) is doing with his life at the moment.
+<div style="font-size: 130%; margin-bottom: 1.5rem">
+  Check out what <a href="/about">João Cerqueira</a> is doing with his life at the moment.
+</div>
 
 #### Work
 
-* [**Quantum Leap**](http://quleap.com/) &mdash; *current*. a startup focused on building smart solutions;
+* [Quantum Leap](http://quleap.com/) &mdash; *current*. a startup focused on building smart solutions;
 * [Emviagem Group](http://grupoemviagem.pt/) &mdash; a group of tourism related businesses;
 * [Polygon](https://polygon.pt/) &mdash; a startup focused on using biometrics for authentication.
 
