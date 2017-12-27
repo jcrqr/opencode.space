@@ -20,3 +20,11 @@ for some crazy ideas, notes on code, personal opinions and everything else he se
 
 Follow **und0ck3d** on [Twitter](https://twitter.com/und0ck3d) for more (*240 characters limited*) crazy ideas and opinions,
 and on [Github](http://github.com/und0ck3d) to check some code he's written or contributed too.
+
+### Contributing
+
+This blog is entirely open source. Code, posts and pages are all available at the Github repository [und0ck3d/opencode.space](https://github.com/und0ck3d/opencode.space).
+
+If you find any bug, typo, security issue or have another suggestion to improve this website, feel free to [submit an issue](https://github.com/und0ck3d/opencode.space/issues) or drop a message to [joao@opencode.space](mailto:joao@opencode.space).
+
+Thanks in advance!
