@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Implementing a peer-to-peer network in Elixir - The Server
+title: "Implementing a peer-to-peer network in Elixir - Part 1: The Server"
 categories: code elixir
 published: true
 ---
@@ -16,9 +16,9 @@ receive the same message back. Simple enough, right?
 
 This series is split in three parts:
 
-0. [Implementing a peer-to-peer network in Elixir - The Server]({{ page.url | relative }}) (current)
-0. ~~Implementing a peer-to-peer network in Elixir - The Client~~
-0. ~~Implementing a peer-to-peer network in Elixir - Enhancements~~
+0. [Implementing a peer-to-peer network in Elixir - Part 1: The Server]({{ page.url | relative }}) (current)
+0. ~~Implementing a peer-to-peer network in Elixir - Part 2: The Client~~
+0. ~~Implementing a peer-to-peer network in Elixir - Part 3: Enhancements~~
 
 In this post we cover our peer-to-peer network server-side logic. In the end, you will have a working
 TCP server that listens and accepts connections and echoes back every message it receives.
