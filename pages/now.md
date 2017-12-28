@@ -8,7 +8,6 @@ Here you can find some hints about what [João Cerqueira](/about) is doing with 
 
 #### Work
 
-* [**Quantum Leap**](http://quleap.com/) &mdash; *current*. a startup focused on building smart solutions;
 * [Emviagem Group](http://grupoemviagem.pt/) &mdash; a group of tourism related businesses;
 * [Polygon](https://polygon.pt/) &mdash; a startup focused on using biometrics for authentication.
 
